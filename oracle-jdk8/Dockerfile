@@ -13,14 +13,13 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   locale-gen en_US.UTF-8
-RUN apt-get install -y curl htop man software-properties-common vim wget
+RUN apt-get install -y curl htop man software-properties-common vim wget python-software-properties debconf-utils
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV HOME /root
 
-RUN apt-get -y install python-software-properties
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 
@@ -28,5 +27,5 @@ RUN apt-get update
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 # and install java 8 oracle jdk
 RUN apt-get -y install oracle-java8-installer && apt-get clean
-RUN update-alternatives --display java 
+RUN update-alternatives --display java
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
