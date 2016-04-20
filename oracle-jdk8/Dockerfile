@@ -20,7 +20,7 @@ ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV HOME /root
 
-RUN add-apt-repository ppa:webupd8team/java
+RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get update
 
 # automatically accept oracle license
