@@ -1,4 +1,11 @@
-# Docker Image with Ubuntu 14.04, Python 2.7 and OpenCV 3.2.0
+# Docker container - Ubuntu 14.04, Python 2.7 and OpenCV 3.2.0
 
-## Build docker
+## Contents
+- Ubuntu 14.04 upgraded
+- Python 2.7
+- OpenCV 3.2.0 + Examples + Contrib
+- numpy
+- matplotlib
+
+## How to Build?
 `sudo docker build .`
