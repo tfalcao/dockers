@@ -3,6 +3,7 @@ MAINTAINER Thiago Falcao "thiagofalcao@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# Python
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
@@ -12,9 +13,6 @@ RUN apt-get update \
     libswscale-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libv4l-dev \
     && apt-get autoremove \
     && apt-get clean
-
-RUN python --version
-RUN pip -- version
 RUN pip install numpy matplotlib
 
 
