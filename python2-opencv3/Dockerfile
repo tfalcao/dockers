@@ -4,15 +4,15 @@ MAINTAINER Thiago Falcao "thiagofalcao@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # Python
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y \
+RUN apt-get update
+RUN apt-get install -y \
     python2.7-dev python-pip wget unzip \
     build-essential cmake git pkg-config libatlas-base-dev gfortran \
     libjasper-dev libgtk2.0-dev libavcodec-dev libavformat-dev \
-    libswscale-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libv4l-dev \
-    && apt-get autoremove \
-    && apt-get clean
+    libswscale-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libv4l-dev && \
+    apt-get autoremove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN pip install numpy matplotlib
 
 
