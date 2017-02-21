@@ -13,10 +13,13 @@ RUN apt-get install -y \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+WORKDIR /app
+ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 
 # OpenCV
+WORKDIR /
 RUN wget https://github.com/opencv/opencv/archive/3.2.0.zip -O opencv3.zip && \
     unzip -q opencv3.zip && mv /opencv-3.2.0 /opencv
 RUN wget https://github.com/opencv/opencv_contrib/archive/3.2.0.zip -O opencv_contrib3.zip && \
@@ -37,4 +40,8 @@ RUN make -j4
 RUN make install
 RUN ldconfig
 
-CMD ["bash"]
+ADD versions.py /app/versions.py
+
+WORKDIR /app
+
+CMD ["python", "versions.py"]
