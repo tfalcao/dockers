@@ -13,7 +13,7 @@ RUN apt-get install -y \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN pip install numpy matplotlib
+RUN pip install -r requirements.txt
 
 
 # OpenCV
