@@ -1,0 +1,12 @@
+FROM thiagofalcao/python2.7
+
+RUN pip install nose
+RUN pip install mock
+RUN pip install coverage
+RUN pip install pylint
+
+WORKDIR /app
+
+ADD test.sh /app/test.sh
+
+CMD ["bash", "test.sh"]

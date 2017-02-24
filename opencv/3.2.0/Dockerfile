@@ -6,13 +6,26 @@ MAINTAINER Thiago Falcao "thiagofalcao@gmail.com"
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
-    wget unzip \
-    cmake git pkg-config libatlas-base-dev gfortran \
-    libjasper-dev libgtk2.0-dev libavcodec-dev libavformat-dev \
-    libswscale-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libv4l-dev && \
-    apt-get autoremove && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    wget \
+    unzip \
+    cmake \
+    git \
+    pkg-config \
+    libatlas-base-dev \
+    gfortran \
+    libjasper-dev \
+    libgtk2.0-dev \
+    libavcodec-dev \
+    libavformat-dev \
+    libswscale-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libjasper-dev \
+    libv4l-dev \
+    && apt-get autoremove \
+    && apt-get clean
+
 WORKDIR /app
 ADD requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
@@ -39,8 +52,4 @@ RUN make -j4
 RUN make install
 RUN ldconfig
 
-ADD versions.py /app/versions.py
-
 WORKDIR /app
-
-CMD ["python", "versions.py"]
