@@ -22,3 +22,7 @@ RUN apt-get update \
 
 RUN pip install setuptools
 RUN pip install virtualenv
+RUN pip install nose
+RUN pip install mock
+RUN pip install coverage
+RUN pip install pylint
