@@ -1,9 +1,12 @@
 NAME = thiagofalcao/python2.7
-VERSION = 0.1.0
+VERSION = latest
 
 .PHONY: all build run test
 
 all: build
+
+pull:
+	docker pull $(NAME)
 
 build:
 	docker build -t $(NAME):$(VERSION) .
@@ -12,4 +15,4 @@ run:
 	docker run -it $(NAME)
 
 test:
-	docker run -v $PWD:/app -w /app $(NAME) /bin/sh /app/test.sh
+	docker run -v ${CURDIR}:/app -w /app $(NAME) /bin/sh test.sh
